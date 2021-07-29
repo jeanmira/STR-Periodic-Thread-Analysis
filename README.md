@@ -1,0 +1,1 @@
+# STR-Analise-de-Thread-Periodica
