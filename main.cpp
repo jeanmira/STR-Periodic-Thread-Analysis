@@ -4,28 +4,21 @@
 //  • 4.º Passo - Alterar a política de escalonamento na thread;
 //  • 5.º Passo - Rodar os dois programas em paralelo e fazer analise.
 
-#include <unistd.h>
-#include <iostream>
-#include <signal.h>
-#include <time.h>
+#include "escalonamento.h"
+#include "tarefa.h"
+#include "clock.h"
 
-using namespace std;
+#include <iostream>
+#include <vector>
 
 int main(int argc, char const *argv[])
 {
-    int periodo, prioridade, fator_Carga, politica_Escalonamento;
-    int clock_id = CLOCK_REALTIME;
 
-    cout << "Informe o pedriodo da tarefa (ms): " << endl;
-    cin >> periodo;
-    cout << "Informe a prioridade da tarefa: " << endl;
-    cin >> prioridade;
-    cout << "Informe o fator de carga da tarefa: " << endl;
-    cin >> fator_Carga;
-    cout << "Informe a politica de escalonamento: " << endl;
-    cin >> politica_Escalonamento;
-
-    int timer_create(clock_id);
+    std::vector<Tarefa> tarefas;
+    Tarefa tarefa1("t1", 500, 100000);
+    Tarefa tarefa2("t2", 500, 100000);
+    tarefas.push_back(tarefa2);
+    tarefas.push_back(tarefa2);
 
     return 0;
 }
