@@ -1,35 +1,45 @@
 #include "tarefa.h"
 
-Tarefa::Tarefa(string n, int p, int f)
+Tarefa::Tarefa(int per, int pri, int fat, string pol)
 {
-    this->nome = n;
-    this->periodo = p;
-    this->fatorCarga = f;
+    this->periodo = per;
+    this->prioridade = pri;
+    this->fatorCarga = fat;
+    this->polıticaEscalonamento = pol;
 }
 
-void Tarefa::setNome(string n)
+void Tarefa::setPeriodo(int per)
 {
-    this->nome = n;
+    this->periodo = per;
 }
-void Tarefa::setPeriodo(int p)
+void Tarefa::setPrioridade(int pri)
 {
-    this->periodo = p;
+    this->prioridade = pri;
 }
-void Tarefa::setFatorCarga(int f)
+void Tarefa::setFatorCarga(int fat)
 {
-    this->fatorCarga = f;
+    this->fatorCarga = fat;
 }
-string Tarefa::getNome()
+void Tarefa::setPolıticaEscalonamento(string pol)
 {
-    return this->nome;
+    this->polıticaEscalonamento = pol;
 }
+
 int Tarefa::getPeriodo()
 {
     return this->periodo;
 }
+int Tarefa::getPrioridade()
+{
+    return this->prioridade;
+}
 int Tarefa::getFatorCarga()
 {
     return this->fatorCarga;
+}
+string Tarefa::getPolıticaEscalonamento()
+{
+    return this->polıticaEscalonamento;
 }
 
 void Tarefa::cargaGenerica(int carga)

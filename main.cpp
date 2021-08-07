@@ -14,11 +14,24 @@
 int main(int argc, char const *argv[])
 {
 
-    std::vector<Tarefa> tarefas;
-    Tarefa tarefa1("t1", 500, 100000);
-    Tarefa tarefa2("t2", 500, 100000);
-    tarefas.push_back(tarefa2);
-    tarefas.push_back(tarefa2);
+    int per = 0, pri = 0, fat = 0;
+    string pol;
+
+    cin >> per;
+    if (per != -1)
+    {
+        cin >> pri;
+        cin >> fat;
+        cin >> pol;
+        Tarefa tarefa1(per, pri, fat, pol);
+    }
+    else
+    {
+        Tarefa tarefa1(500, 1, 100000, "SCHED_RR");
+        Tarefa tarefa2(500, 1, 100000, "SCHED_RR");
+        vector<Tarefa> tarefas{tarefa1, tarefa2};
+        Clock cronometro();
+    }
 
     return 0;
 }
