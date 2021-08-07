@@ -18,10 +18,9 @@ public:
     Escalonamento();                         // Construtor padrão
     ~Escalonamento();                        // Destrutor padrão
     void setParametros(Tarefa novasTarefas); // Cria os objetos e adiciona os parâmetros
-    bool verificaPreEmpetivo();              // Verifica se é preemptivo
-    void imprimiDados();                     // Imprime os dados dos processos
+    void selecionaEscalonamento();           // Seleciona um dos dois escalonadores
     void fcfs();                             // Escalonamento por FCFS (First Come, First Served)
-    void rrsp(int quantum);                  // Escalonamento por Round-Robin com quantum = 2s, sem prioridade
+    void rrsp();                             // Escalonamento por Round-Robin com prioridade
 };
 
 #endif

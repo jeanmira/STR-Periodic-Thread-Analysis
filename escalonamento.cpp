@@ -10,98 +10,29 @@ Escalonamento::~Escalonamento()
 {
 }
 
-// Cria os objetos e adiciona os parâmetros
+//----- Cria os objetos e adiciona os parâmetros
 void Escalonamento::setParametros(Tarefa novasTarefas)
 {
     tarefas.push_back(novasTarefas);
 }
-
-//----- Verifica se é preemptivo
-bool Escalonamento::verificaPreEmpetivo()
+//----- Seleciona um dos dois escalonadores
+void Escalonamento::selecionaEscalonamento()
 {
-    int cont = 0;
-    for (int i = 0; i < p.size(); i++)
+    for (int i = 0; i < tarefas.size(); i++)
     {
-        if (p[i].verificaVazio() == true)
-            cont++;
-    }
-    if (cont == p.size())
-        return true;
-    else
-        return false;
-}
-
-//----- Imprime os dados dos processos
-void Escalonamento::imprimiDados()
-{
-    // Se o código for preemptive calculamos os tempos com os gráficos para
-    int tempoMax = 0, tempoEspera = 0;
-    if (verificaPreEmpetivo())
-    {
-        for (int i = 0; i < p.size(); i++)
+        if (tarefas[i].getPolıticaEscalonamento() == "SCHED_FIFO")
         {
-            for (int j = 0; j < p[0].getEstadoSize(); j++)
-            {
-                if (p[i].getEstado(j) == 2)
-                    tempoEspera++;
-                else if (p[i].getEstado(j) == 1)
-                    tempoMax++;
-            }
-            p[i].setTempoEspera(tempoEspera);
-            p[i].setTempoTotal(tempoMax + tempoEspera);
-            tempoMax = 0;
-            tempoEspera = 0;
+            fcfs();
         }
-    }
-
-    Processo aux(0, 0, 0, 0);
-    for (int i = 0; i < p.size(); i++)
-    {
-        for (int j = i + 1; j < p.size(); j++)
+        else if (tarefas[i].getPolıticaEscalonamento() == "SCHED_RR")
         {
-            if (p[j].getId() < p[i].getId())
-            {
-                aux = p[i];
-                p[i] = p[j];
-                p[j] = aux;
-            }
+            rrsp();
         }
-    }
-    for (int i = 0; i < p.size(); i++)
-    {
-        cout << "Processo(" << i + 1 << "):" << endl;
-        cout << "Tempo total transcorrido: " << p[i].getTempoTotal() << endl;
-        cout << "Tempo médio de espera: " << p[i].getTempoEspera() << endl;
-        cout << "Número de trocas: " << p[i].getnTroca() << endl;
-    }
-    cout << endl
-         << " Tempo    P1  P2  P3  P4" << endl;
-    int aux2 = 0;
-
-    for (int j = 0; j < p[0].getEstadoSize(); j++)
-    {
-        cout << " " << j << " - " << j + 1;
-        if (j < 9)
-            cout << "    ";
-        else if (j == 9)
-            cout << "   ";
         else
-            cout << "  ";
-        for (int i = 0; i < p.size(); i++)
         {
-            if (p[i].getEstado(j) == 1)
-                cout << "##"
-                     << "  ";
-            else if (p[i].getEstado(j) == 2)
-                cout << "--"
-                     << "  ";
-            else
-                cout << "  "
-                     << "  ";
+            cout << "Opcao de Escalonador Errada" << endl;
         }
-        cout << endl;
     }
-    cout << endl;
 }
 
 //----- Escalonamento por FCFS (First Come, First Served)
@@ -161,8 +92,8 @@ void Escalonamento::fcfs()
     }
 }
 
-//----- Escalonamento por Round-Robin com quantum = 2s, sem prioridade
-void Escalonamento::rrsp(int quantum)
+//----- Escalonamento por Round-Robin com prioridade
+void Escalonamento::rrsp()
 {
     cout << "----- Escalonamento por Round-Robin com quantum = 2s, sem prioridade -----" << endl;
     int tempoTotal = 0;
