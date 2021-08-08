@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "iostream": "c"
+        "iostream": "c",
+        "signal.h": "c",
+        "ostream": "cpp"
     }
 }
