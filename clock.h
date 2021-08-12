@@ -5,27 +5,27 @@
 #include <time.h>
 #include <signal.h>
 
+#include "tarefa.h"
+
 using namespace std;
 
 #define CLOCKID CLOCK_REALTIME
-#define SIG SIGRTMIN
-
-#define errExit(msg)        \
-    do                      \
-    {                       \
-        perror(msg);        \
-        exit(EXIT_FAILURE); \
-    } while (0)
 
 class Clock
 {
 private:
-    timer_t timerid;     //
-    sigset_t signal_set; //
+    int signo;                     //
+    int stat;                      //
+    timer_t timerid;               //
+    sigset_t signal_set;           //
+    struct itimerspec period;      //
+    struct itimerspec rest_Period; //
+    struct sigaction action;       //
 
 public:
-    Clock();
-    void inicializaTimer(long periodo);
+    Clock();                        //
+    ~Clock();                       //
+    void inicializaTimer(Tarefa T); //
 };
 
 #endif

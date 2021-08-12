@@ -1,6 +1,6 @@
 # **Sistemas de Tempo Real - Implementação e Análise de Thread Periódica no Linux**
 
-[![Generic badge](https://img.shields.io/badge/Status-Andamento-brightgreen.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Status-Finalizado-brightgreen.svg)](https://shields.io/)
 
 ## Descrição do Projeto:
 O trabalho consiste na implementação de threads ou tarefas periódicas no Linux. Será utilizado o Timer padrão POSIX e o sinal enviado por ele para implementar o comportamento periódico de uma thread. 
@@ -11,3 +11,14 @@ O trabalho consiste na implementação de threads ou tarefas periódicas no Linu
       • 3.º Passo - Colocar o fator de carga na thread;
       • 4.º Passo - Alterar a política de escalonamento na thread;
       • 5.º Passo - Rodar os dois programas em paralelo e fazer analise.
+      
+### Como executar:
+      • 1.º Passo - Abrir dois terminais no Linux;
+      • 2.º Passo - Executar o comando: $ make
+      • 3.º Passo - Digite o valor de período (em milissegundos, de 1 ms a 999 ms)
+      • 4.º Passo - Digite a prioridade da tarefa/thread
+      • 5.º Passo - Digite o valor de fator de carga da CPU
+      • 6.º Passo - Digite o valor de política de escalonamento (SCHED FIFO ou SCHED RR)
+      • 7.º Passo - O código ira executar até o usuário digitar no terminal o comando: $ ctrl + c
+
+

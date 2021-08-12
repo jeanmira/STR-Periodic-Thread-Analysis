@@ -17,16 +17,22 @@ FLAGS = -Wall
 # Variáveis do tipo executável
 O = *.o 
 
+SUPERUSE = sudo
+
 # Variáveis ou flag de Thread
 THREAD = -lpthread
 
 #Para fins de analise de interferencia entre duas tarefas, deve se executar duas instancias do programa no mesmo processador
 MESMOPROCESSADOR = taskset
 
+# Para sisteams de tempo real
 REALTIME = -lrt
 
 # Nome do executável
 EXE = exe
+
+# Específica o core a ser usado
+CORE = 0
 
 # Comando para limpar arquivo
 RM = rm -rf 
@@ -45,9 +51,8 @@ limpa:
 # Compila e executa o programa
 run:
 	$(CC) $(FLAGS) -c $(APPNAME)
-	$(CC) $(FLAGS) -o $(EXE) $(O) $(REALTIME)
-# $(MESMOPROCESSADOR) 
-	./$(EXE)
+	$(CC) $(FLAGS) -o $(EXE) $(O) $(REALTIME) 
+	$(SUPERUSE) $(MESMOPROCESSADOR) -c $(CORE) ./$(EXE)
 
 # Apaga todos os arquivos .o é o executável criado
 clean:

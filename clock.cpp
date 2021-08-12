@@ -4,27 +4,47 @@ Clock::Clock()
 {
 }
 
-void Clock::inicializaTimer(long periodo)
+Clock::~Clock()
 {
-    struct itimerspec timer_spec;
+}
 
-    // Crie um cronômetro.
-    if (timer_create(CLOCKID, NULL, &timerid) == -1)
-        errExit("timer_create");
+void handler(int num)
+{
+    std::cout << "Deadline perdida!" << endl;
+}
 
-    // Especifique o período do cronômetro.
-    timer_spec.it_value.tv_sec = 0;
-    timer_spec.it_value.tv_nsec = 1; // Comece imediatamente
-    timer_spec.it_interval.tv_sec = 0;
-    timer_spec.it_interval.tv_nsec = periodo * 1000000; // Período fornecido em mseg, definido em nsec;
+void Clock::inicializaTimer(Tarefa T)
+{
 
-    // Configure um sinal definido para sigwait () para esperar por SIGALRM
     sigemptyset(&signal_set);
     sigaddset(&signal_set, SIGALRM);
 
-    // Configure o período do cronômetro.
-    if (timer_settime(timerid, 0, &timer_spec, NULL) == -1)
-        errExit("timer_settime");
+    action.sa_handler = &handler;
+    action.sa_flags = SA_SIGINFO;
 
-    printf("Periodic timer set with period = %ldmsec.\n", periodo);
+    // Criando um timer.
+    timer_create(CLOCKID, NULL, &timerid);
+
+    period.it_value.tv_sec = 0;                            //
+    period.it_value.tv_nsec = T.getPeriodo() * 1000000;    //
+    period.it_interval.tv_sec = 0;                         //
+    period.it_interval.tv_nsec = T.getPeriodo() * 1000000; // Período fornecido em mseg, definido em nsec;
+
+    // Setup the timer’s period.
+    timer_settime(timerid, 0, &period, NULL);
+
+    while (true)
+    {
+
+        sigaction(SIGALRM, &action, NULL);
+        sigwait(&signal_set, &signo);
+
+        for (long long int i = 0; i < T.getFatorCarga() * 1000; i++)
+        {
+            /* Execultando */
+        }
+        timer_gettime(timerid, &rest_Period);
+
+        std::cout << "Tempo de resposta:" << T.getPeriodo() - (rest_Period.it_value.tv_nsec / 1000000) << "ms" << std::endl;
+    }
 }
