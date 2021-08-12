@@ -13,7 +13,7 @@ O trabalho consiste na implementação de threads ou tarefas periódicas no Linu
       • 5.º Passo - Rodar os dois programas em paralelo e fazer analise.
       
 ### Como executar:
-      • 1.º Passo - Abrir dois terminais no Linux;
+      • 1.º Passo - Abrir dois terminais no Linux
       • 2.º Passo - Executar o comando: $ make
       • 3.º Passo - Digite o valor de período (em milissegundos, de 1 ms a 999 ms)
       • 4.º Passo - Digite a prioridade da tarefa/thread
