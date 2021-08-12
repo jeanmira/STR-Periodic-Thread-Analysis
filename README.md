@@ -18,7 +18,7 @@ O trabalho consiste na implementação de threads ou tarefas periódicas no Linu
       • 3.º Passo - Digite o valor de período (em milissegundos, de 1 ms a 999 ms)
       • 4.º Passo - Digite a prioridade da tarefa/thread
       • 5.º Passo - Digite o valor de fator de carga da CPU
-      • 6.º Passo - Digite o valor de política de escalonamento (SCHED FIFO ou SCHED RR)
+      • 6.º Passo - Digite o valor de política de escalonamento (FIFO ou RR)
       • 7.º Passo - O código ira executar até o usuário digitar no terminal o comando: $ ctrl + c
 
 
