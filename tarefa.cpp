@@ -17,6 +17,19 @@ Tarefa::Tarefa()
     std::cout << "Informe a politica de escalonamento:" << std::endl;
     std::cin >> politicaEscalonamento;
     this->politicaEscalonamento = politicaEscalonamento;
+
+    if (this->politicaEscalonamento == "OTHER")
+    {
+        this->politica = {.sched_priority = 0};
+    }
+    else if (this->politicaEscalonamento == "FIFO")
+    {
+        this->politica = {.sched_priority = 1};
+    }
+    else if (this->politicaEscalonamento == "RR")
+    {
+        this->politica = {.sched_priority = 2};
+    }
 }
 
 Tarefa::~Tarefa()
@@ -63,15 +76,15 @@ void Tarefa::cargaGenerica(int load)
     {
         for (long long int i = 0; i < load * 1000; i++)
         {
-            //sigwait(&signal_set, sigptr);
             /* Execultando */
         }
     }
 }
 
-void Tarefa::escalonamento() {
+void Tarefa::escalonamento()
+{
 
-    // politica.sched_priority = prioridade;
+    //politica.sched_priority = prioridade;
 
     if (politicaEscalonamento == "OTHER")
     {
@@ -105,9 +118,3 @@ void Tarefa::escalonamento() {
         cout << "Politica Escalonamento RR" << endl;
     }
 }
-
-
-
-
-
-

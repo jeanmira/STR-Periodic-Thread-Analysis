@@ -13,11 +13,11 @@ using namespace std;
 class Tarefa
 {
 private:
-    int periodo;                                         // Período (em milisegundos, de 1 ms a 999 ms)
-    int prioridade;                                      // Prioridade da tarefa/thread
-    int fatorCarga;                                      // fator de carga da CPU
-    string politicaEscalonamento;                        // Política de escalonamento (SCHED_FIFO ou SCHED_RR)
-    struct sched_param politica = {.sched_priority = 2}; //
+    int periodo;                  // Período (em milisegundos, de 1 ms a 999 ms)
+    int prioridade;               // Prioridade da tarefa/thread
+    int fatorCarga;               // fator de carga da CPU
+    string politicaEscalonamento; // Política de escalonamento (SCHED_FIFO ou SCHED_RR)
+    struct sched_param politica;  //
 
 public:
     Tarefa();

@@ -13,12 +13,12 @@ O trabalho consiste na implementação de threads ou tarefas periódicas no Linu
       • 5.º Passo - Rodar os dois programas em paralelo e fazer analise.
       
 ### Como executar:
-      • 1.º Passo - Abrir dois terminais no Linux;
+      • 1.º Passo - Abrir dois terminais no Linux
       • 2.º Passo - Executar o comando: $ make
-      • 3.º Passo - Digite o valor de período (em milissegundos, de 1 ms a 999 ms)
-      • 4.º Passo - Digite a prioridade da tarefa/thread
-      • 5.º Passo - Digite o valor de fator de carga da CPU
-      • 6.º Passo - Digite o valor de política de escalonamento (SCHED FIFO ou SCHED RR)
-      • 7.º Passo - O código ira executar até o usuário digitar no terminal o comando: $ ctrl + c
-
+      • 3.º Passo - Digite a senha
+      • 4.º Passo - Digite o valor de período (em milissegundos, de 1 ms a 999 ms)
+      • 5.º Passo - Digite a prioridade da tarefa/thread
+      • 6.º Passo - Digite o valor de fator de carga da CPU
+      • 7.º Passo - Digite o valor de política de escalonamento (FIFO ou RR)
+      • 8.º Passo - O código ira executar até o usuário digitar no terminal o comando: $ ctrl + c
 
